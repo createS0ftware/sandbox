@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-import org.apache.commons.collections.list.TreeList;
+import org.apache.commons.collections4.list.TreeList;
 
 /**
  * CombinedList
@@ -30,7 +30,6 @@ import org.apache.commons.collections.list.TreeList;
  * <pre>
  * @author Leo Lewis
  */
-@SuppressWarnings("unchecked")
 public class CombinedList<E> extends AbstractList<E> {
 
 	/** Serial version UID */
@@ -41,7 +40,7 @@ public class CombinedList<E> extends AbstractList<E> {
 	/** ArrayList */
 	private ArrayList<E> arrayList;
 	/** TreeList */
-	private TreeList treeList;
+	private TreeList<E> treeList;
 
 	/** If hashSet is up-to-date */
 	private boolean isHashSetUpToDate = true;
@@ -74,7 +73,7 @@ public class CombinedList<E> extends AbstractList<E> {
 	private void init() {
 		hashSet = new HashSet<E>();
 		arrayList = new ArrayList<E>();
-		treeList = new TreeList();
+		treeList = new TreeList<E>();
 	}
 
 	/**
@@ -308,8 +307,7 @@ public class CombinedList<E> extends AbstractList<E> {
 		// most efficient is TreeList
 		updateTreeListIfOutOfDate();
 		// performances issues on the retainAll method
-		@SuppressWarnings("rawtypes")
-		boolean retainedAll = treeList.removeAll(new HashSet(col));
+		boolean retainedAll = treeList.removeAll(new HashSet<>(col));
 		if (retainedAll) {
 			setOtherThanTreeListOutOfDate();
 		}

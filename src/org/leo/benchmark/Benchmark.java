@@ -38,7 +38,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import org.apache.commons.collections.list.TreeList;
+import org.apache.commons.collections4.list.TreeList;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -584,7 +584,6 @@ public class Benchmark {
 	 * 
 	 * @param args
 	 */
-	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		try {
 			Benchmark benchmark = new Benchmark(15000, 100000);
